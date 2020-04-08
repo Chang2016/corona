@@ -15,6 +15,7 @@ fun main(args: Array<String>) {
     personList.add(boris)
     println(findInfected(personList))
     countToX(12)
+    println("Michael".lastChar())
 
 }
 
@@ -52,5 +53,7 @@ fun countToX(count: Int = 10) {
         println("$c")
     }
 }
+
+fun String.lastChar(): Char = get(length - 1)
 
 
