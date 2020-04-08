@@ -9,8 +9,13 @@ fun main(args: Array<String>) {
 
     val borisState: InfectionState  = InfectionState(true, false)
     val boris: Person = Person("Boris", 55, borisState)
-    println(findOldest(michael, boris))
-    //val personList = arrayListOf(michael, boris)
+
+    val personList = ArrayList<Person>()
+    personList.add(michael)
+    personList.add(boris)
+    println(findInfected(personList))
+    countToX(12)
+
 }
 
 data class Person(val name: String,
@@ -29,11 +34,23 @@ data class InfectionState(val infected: Boolean,
 //Funktion mit expression body also ohne geschweifte Klammern, return type ist Int wegen type inference
 fun findOldest(a: Person, b: Person) = if(a.age > b.age) a else b
 
-//Funktion mit block Body return type wird am Ende explizit angegeben
-/*fun findInfected(persons: Array<Person>) : Array<Person> {
-    val infectedPersons = arrayListOf()
-    //if()
-    return persons;
-}*/
+//Funktion mit block body return type wird am Ende explizit angegeben
+fun findInfected(persons: ArrayList<Person>) : ArrayList<Person> {
+    val infectedPersons = ArrayList<Person>()
+    for(p in persons) {
+        if(p.infectionState.infected)
+            infectedPersons.add(p)
+    }
+    return infectedPersons;
+}
+
+// Funktion mit default-Parameter
+fun countToX(count: Int = 10) {
+    val range = 0 .. count
+    // for-Loop mit step size
+    for(c in range step 2) {
+        println("$c")
+    }
+}
 
 
