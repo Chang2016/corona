@@ -15,7 +15,13 @@ fun main(args: Array<String>) {
 
 data class Person(val name: String,
                   val age: Int,
-                  var infectionState: InfectionState)
+                  var infectionState: InfectionState) {
+    //custom getter without a field to store it's value
+    val shouldStayAtHome: Boolean
+        get() {
+            return !infectionState.infected && infectionState.antiBody
+        }
+}
 
 data class InfectionState(val infected: Boolean,
                           val antiBody: Boolean)
